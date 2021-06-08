@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav>
+      <nav style={{ background: theme.ui, color: theme.syntax }}>
         <h1>Context App</h1>
         <ul>
           <li>Home</li>

@@ -1,0 +1,19 @@
+{
+  "books": [
+    {
+      "id": 2,
+      "title": "julia's dance",
+      "author": "Perky Oppong"
+    },
+    {
+      "title": "Saalih's Power",
+      "author": "Saalu",
+      "id": 3
+    },
+    {
+      "title": "Honourable",
+      "author": "CJ",
+      "id": 5
+    }
+  ]
+}

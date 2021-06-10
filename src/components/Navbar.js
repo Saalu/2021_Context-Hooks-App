@@ -9,7 +9,6 @@ function Navbar() {
   const { books } = useContext(BookContext);
   const theme = isLightTheme ? light : dark;
 
-  console.log(books);
   return (
     <div>
       <nav style={{ background: theme.ui, color: theme.syntax }}>

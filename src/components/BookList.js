@@ -1,20 +1,29 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 function BookList() {
-  const data = useContext(ThemeContext);
-  const { dark, light, isLightTheme } = data;
+  const themeContext = useContext(ThemeContext);
+  const { dark, light, isLightTheme } = themeContext;
   const theme = isLightTheme ? light : dark;
 
+  const [books, setBooks] = useState([
+    { id: 1, title: "the courage to say no" },
+    { id: 2, title: "the merchanct of vernice" },
+    { id: 3, title: "julia's dance" },
+  ]);
   return (
     <div
       className="book-list"
       style={{ color: theme.syntax, background: theme.bg }}
     >
       <ul>
-        <li style={{ background: theme.ui }}>the courage to say no</li>
-        <li style={{ background: theme.ui }}>the merchanct of vernice</li>
-        <li style={{ background: theme.ui }}>julia's dance</li>
+        {books.map((book) => {
+          return (
+            <li key={book.id} style={{ background: theme.ui }}>
+              {book.title}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

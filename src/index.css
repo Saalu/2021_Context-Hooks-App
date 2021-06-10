@@ -7,9 +7,33 @@
 }
 
 body {
-  width: 500px;
+  width: 400px;
   margin: auto;
   margin-top: 2rem;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  outline: none;
+  border: none;
+}
+
+.dark-bg {
+  background-color: #333;
+  color: #ddd;
+}
+.light-bg {
+  background-color: #ddd;
+}
+
+.btn button {
+  padding: 0.5rem;
+  opacity: 1;
+}
+.btn button:hover {
+  opacity: 0.9;
 }
 
 nav {

@@ -7,9 +7,68 @@
 }
 
 body {
-  width: 500px;
+  width: 450px;
   margin: auto;
   margin-top: 2rem;
+}
+.book-list {
+  text-transform: capitalize;
+}
+
+form input {
+  margin: 5px 0;
+  width: 400px;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+}
+
+form button {
+  padding: 0.4rem 1rem;
+}
+.fas {
+  background-color: red;
+  padding: 0.3rem;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  color: #ddd;
+}
+
+.fa-check {
+  /* color: green; */
+  background-color: green;
+}
+.fa-trash {
+  /* color: red; */
+  background-color: red;
+}
+
+nav {
+  position: relative;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  position: absolute;
+  top: 2%;
+  right: 35%;
+}
+
+.dark-bg {
+  background-color: #333;
+  color: #ddd;
+}
+.light-bg {
+  background-color: #ddd;
+}
+
+.btn button {
+  padding: 0.5rem;
+  opacity: 1;
+}
+.btn button:hover {
+  opacity: 0.9;
 }
 
 nav {

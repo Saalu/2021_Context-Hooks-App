@@ -1,17 +1,14 @@
 import React, { useState, useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
+import { BookContext } from "../contexts/BookContext";
+import BookDetails from "./BookDetails";
 
-function BookList() {
-  const themeContext = useContext(ThemeContext);
-  const { dark, light, isLightTheme } = themeContext;
+const BookList = () => {
+  const { dark, light, isLightTheme } = useContext(ThemeContext);
   const theme = isLightTheme ? light : dark;
+  const { books, removeBook } = useContext(BookContext);
 
-  const [books, setBooks] = useState([
-    { id: 1, title: "the courage to say no" },
-    { id: 2, title: "the merchanct of vernice" },
-    { id: 3, title: "julia's dance" },
-  ]);
-  return (
+  return books.length ? (
     <div
       className="book-list"
       style={{ color: theme.syntax, background: theme.bg }}
@@ -19,14 +16,16 @@ function BookList() {
       <ul>
         {books.map((book) => {
           return (
-            <li key={book.id} style={{ background: theme.ui }}>
-              {book.title}
-            </li>
+            <BookDetails key={book.id} book={book} removeBook={removeBook} />
           );
         })}
       </ul>
     </div>
+  ) : (
+    <div className="empty">
+      No books to read. Hello you've got some free time
+    </div>
   );
-}
+};
 
 export default BookList;

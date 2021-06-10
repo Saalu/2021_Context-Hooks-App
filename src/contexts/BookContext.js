@@ -1,23 +1,46 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import uuid from "react-uuid";
-
+import api from "../api";
 export const BookContext = createContext();
 
 function BookContextProvider(props) {
-  const [books, setBooks] = useState([
-    { id: 1, title: "the courage to say no", author: "Kwesi Koranteng" },
-    { id: 2, title: "julia's dance", author: "Perky Oppong" },
-  ]);
+  const [books, setBooks] = useState([]);
 
-  const addBook = (title, author) => {
-    setBooks([...books, { id: uuid(), title, author }]);
+  const addBook = async (input) => {
+    const res = await api.post("/books", input);
+    const payload = res.data;
+    setBooks([...books, { id: uuid(), payload }]);
   };
 
-  const removeBook = (id) => {
+  const fetchBook = async () => {
+    const res = await api.get("/books");
+    return res.data;
+  };
+
+  const removeBook = async (id) => {
+    await api.delete(`/books/${id}`);
     setBooks(books.filter((book) => book.id !== id));
   };
+
+  const updateBook = async (clickBook) => {
+    const res = await api.put(`/books/${clickBook.id}`, clickBook);
+
+    console.log("tap", clickBook);
+
+    // setBooks(
+    //   books.map((book) => (book.id === res.data.id ? res.data : clickBook))
+    // );
+  };
+
+  useEffect(() => {
+    const getBooks = async () => {
+      const allBooks = await fetchBook();
+      if (allBooks) setBooks(allBooks);
+    };
+    getBooks();
+  }, []);
   return (
-    <BookContext.Provider value={{ books, addBook, removeBook }}>
+    <BookContext.Provider value={{ books, addBook, updateBook, removeBook }}>
       {props.children}
     </BookContext.Provider>
   );

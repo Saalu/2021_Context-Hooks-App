@@ -4,7 +4,6 @@ import { ThemeContext } from "../contexts/ThemeContext";
 function ThemeToggle() {
   const themeContext = useContext(ThemeContext);
   const { toggleTheme, isLightTheme } = themeContext;
-  console.log(isLightTheme);
 
   return (
     <div className="btn">

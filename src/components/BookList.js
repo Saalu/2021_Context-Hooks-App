@@ -6,7 +6,7 @@ import BookDetails from "./BookDetails";
 const BookList = () => {
   const { dark, light, isLightTheme } = useContext(ThemeContext);
   const theme = isLightTheme ? light : dark;
-  const { books, removeBook } = useContext(BookContext);
+  const { books } = useContext(BookContext);
 
   return books.length ? (
     <div
@@ -15,14 +15,15 @@ const BookList = () => {
     >
       <ul>
         {books.map((book) => {
-          return (
-            <BookDetails key={book.id} book={book} removeBook={removeBook} />
-          );
+          return <BookDetails key={book.id} book={book} />;
         })}
       </ul>
     </div>
   ) : (
-    <div className="empty">
+    <div
+      className="empty"
+      style={{ color: theme.syntax, background: theme.bg }}
+    >
       No books to read. Hello you've got some free time
     </div>
   );
